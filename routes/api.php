@@ -15,9 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum'])->group(function () {
+//normal auth
+Route::post('/auth/register', [AuthController::class, 'createUser']);
+Route::post('/auth/login', [AuthController::class, 'loginUser']);
+
+//otp auth
+Route::post('/auth/verify_otp', [AuthController::class, 'verifyOtp']);
+Route::post('/auth/request_otp', [AuthController::class, 'requestOtp']);
+
+//if authenticated
+Route::middleware('auth:sanctum')->group(function(){
     Route::get('/helloworld', [AuthController::class, 'helloWorld'])->name('helloworld');
 });
 
-Route::post('/auth/register', [AuthController::class, 'createUser']);
-Route::post('/auth/login', [AuthController::class, 'loginUser']);
+
+
