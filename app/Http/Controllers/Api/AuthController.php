@@ -159,8 +159,7 @@ class AuthController extends Controller
      * @param OTP
      * @return Token
      */
-    public function verifyOtp(Request $request)
-    {
+    public function verifyOtp(Request $request){
         try {
             $validateUser = Validator::make($request->all(), [
                 'email' => 'required|email',

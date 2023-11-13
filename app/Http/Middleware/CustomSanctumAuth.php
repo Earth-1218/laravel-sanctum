@@ -16,7 +16,7 @@ class CustomSanctumAuth
             $user = Auth::guard('sanctum')->user();
             Log::info("User ID {$user->id} authenticated.");
         }
-
+        
         return $next($request);
     }
 }
